@@ -6,23 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wather App</title>
     <script src="https://kit.fontawesome.com/7e99b93fa3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="app.css">
+    <link rel="stylesheet" href="style.css">
     
 </head>
 <body>
     <div class="app_container">
         <div class="city">
             <h1>City Name</h1>
+            <input type="text" class="city_name" placeholder="Enter your city name"><br>
+            <!-- <input type="text" class="btn" value="SUBMIT"> -->
+            <input type="submit" value="SUBMIT" class="btn">
         </div>
         <div class="temp">
             <p><i class="fas fa-cloud-sun-rain"></i></p>
             <p><span>32</span> &#176C</p>
+            <div class="deg"></div>
         </div>
         <div class="climate">
             <h1>Climate</h1>
+            <div class="cli"></div>
         </div>
     </div>
 
-    <script src="../WeatherApp/app.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
