@@ -1,56 +1,38 @@
-// Get all inputs
-const city = document.querySelector(".city_name");
-let button = document.querySelector(".btn");
-const degree = document.querySelector(".deg");
-const climate = document.querySelector(".cli");
+//Gets the input and button showdata elements
+let city = document.querySelector(".city");
+let btn = document.querySelector(".submit");
+let showCity = document.querySelector(".showCity")
+let showTemp = document.querySelector(".showTemp");
+let showClimate = document.querySelector(".showClimate");
+let dataContainer = document.querySelector(".dataContainer");
 
-button.addEventListener("click", () =>{
-    //Get city input value
-    const cityName = city.value;
-    // console.log(cityName);
+dataContainer.style.display = "none";
 
-    API_key = "d925ccfc61a5c5b1ccb40153794477bb"
-    //Fetch the openweather api
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_key}`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data);
+btn.addEventListener('click', ()=>{
+    let cityName = city.value;
+    let key = "d925ccfc61a5c5b1ccb40153794477bb";
+    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}`)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data);
+        dataContainer.style.display = "flex";
+        //disappear the city input after getting the weather data
+        city.value = " ";
 
-            //Clear the cityname
-            city.value = ' ';
-
-            let tem = data.main.temp - 273.15;
-            // console.log(data.main.temp, tem);
-            degree.innerHTML = `<p> ${tem.toFixed(2)} &#176C</p>`;
-            climate.innerHTML = `<p>${data.weather[0].description}</p>`
-        })
-
+        if(data.cod != 404){
+        showCity.innerHTML = `${data.name}`;
+        showTemp.innerHTML = `${(data.main.temp - 273.15).toFixed(2)}&deg C`;
+        showClimate.innerHTML = `${data.weather[0].description}`;
+        }
+        else{
+            let flex = document.querySelector(".flex");
+            let notFound = document.createElement("div");
+            notFound.innerHTML = `${cityName} is not a city name`;
+            flex.appendChild(notFound);
+            setTimeout(()=>{
+                notFound.innerHTML = `Please check the spelling or enter a valid city name`;
+                flex.appendChild(notFound);
+            }, 2000);
+        }
+    })
 })
-
-
-
-
-// window.addEventListener("load", () =>{
-//     let long;
-//     let lat;
-    
-//         if(navigator.geolocation){
-//             navigator.geolocation.getCurrentPosition((position)=>{
-//                 long = position.coords.longitude;
-//                 lat = position.coords.latitude;
-
-//                 const proxy = "http://127.0.0.1:5500/WeatherApp/";
-//                 const api = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&long=${long}&appid= {d925ccfc61a5c5b1ccb40153794477bb}`;
-//                 fetch(api)
-//                     .then(resp=>{
-//                         // if(!resp.ok) throw new Error(resp.statusText);
-//                         // return resp.json();
-//                         console.log(resp);
-//                     })
-//                     .then(data =>{
-//                         console.log(data);
-//                     })
-//                     .catch(console.err);
-//             })
-//         }
-// })

@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wather App</title>
-    <script src="https://kit.fontawesome.com/7e99b93fa3.js" crossorigin="anonymous"></script>
+    <title>Document</title>
     <link rel="stylesheet" href="style.css">
-    
 </head>
+
 <body>
-    <div class="app_container">
-        <div class="city">
-            <h1>City Name</h1>
-            <input type="text" class="city_name" placeholder="Enter your city name"><br>
-            <!-- <input type="text" class="btn" value="SUBMIT"> -->
-            <input type="submit" value="SUBMIT" class="btn">
-        </div>
-        <div class="temp">
-            <p><i class="fas fa-cloud-sun-rain"></i></p>
-            <p><span>32</span> &#176C</p>
-            <div class="deg"></div>
-        </div>
-        <div class="climate">
-            <h1>Climate</h1>
-            <div class="cli"></div>
-        </div>
+    <h1>Weather App</h1>
+    <div class="inputContainer">
+        <input type="text" placeholder="Enter your city name" class="city">
+        <button class="submit">
+            Get Data
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 
+    <div class="dataContainer">
+        <div class="flex">
+            <div class="showCity"></div>
+            <div class="showTemp"></div>
+            <div class="showClimate"></div>
+        </div>
+    </div>
     <script src="main.js"></script>
 </body>
+
 </html>
