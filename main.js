@@ -1,7 +1,7 @@
 //Gets the input and button showdata elements
 let city = document.querySelector(".city");
 let btn = document.querySelector(".submit");
-let showCity = document.querySelector(".showCity")
+let showCity = document.querySelector(".showCity");
 let showTemp = document.querySelector(".showTemp");
 let showClimate = document.querySelector(".showClimate");
 let dataContainer = document.querySelector(".dataContainer");
